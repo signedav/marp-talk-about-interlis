@@ -1,14 +1,13 @@
 {
-  "name": "marp-cli-example",
+  "name": "iliuniverse",
   "version": "0.0.0",
-  "author": "Yuki Hattori <yukihattori1116@gmail.com>",
-  "license": "WTFPL",
-  "private": true,
+  "author": "Dave Signer <david@opengis.ch>",
+  "private": false,
   "scripts": {
     "build": "rimraf dist && npm run -s og-image && npm run -s deck",
-    "deck": "marp --no-stdin relations_in_qgis.md -o dist/index.html && cpy \"assets/**/*\" dist/assets",
+    "deck": "marp --no-stdin iliuniverse.md -o dist/index.html && cpy \"assets/**/*\" dist/assets",
     "now-build": "npm run -s deck",
-    "og-image": "marp relations_in_qgis.md -o dist/og-image.jpg",
+    "og-image": "marp iliuniverse.md -o dist/og-image.jpg",
     "start": "marp -ps ."
   },
   "devDependencies": {
