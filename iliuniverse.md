@@ -26,14 +26,22 @@ _paginate: false
 - Strict division between the transfer part and the modeling part
 -->
 --- 
-## What made me to like it
+## Model definintion and data files
+
+The model is defined in INTERLIS language and stored in an `.ili` file.
+
+The data is in xml (considering the model) and stored as an `.xtf` file (former `.itf`).
+
+--- 
+## What made me to like INTERLIS
 
 > With INTERLIS that you have your database schema in your poket. 
 
-> It's easy readable and precice. Compared to e.g. SQL Scripts you can simply extend it. 
+> It's easy readable and precice.
 
 > Thanks to the nice tools (ili2 and Model Baker) it's easy to implement in your database and in QGIS.
 
+<!--  Compared to e.g. SQL Scripts you can simply extend it. >
 --- 
 
 # <!--fit--> INTERLIS Modelling in 10 Minutes
@@ -48,16 +56,18 @@ VERSION "2020-04-21"  =
   DOMAIN
     Punkt = GeometryCHLV95_V1.Coord2;
   TOPIC Wildruhezonen =
-    CLASS Wildruhezone =
+    CLASS Routennetz =
       Name : MANDATORY TEXT*80;
-    END Wildruhezone;
+    END Routennetz;
   END Wildruhezonen;
 END Wildruhezonen_LV95_V2_1.
 ```
 
 ![bg right 50%](./assets/interlis_model_structure.png)
 
-<!-- A model contains Units, Functions, Domains, Classes, Structures and Topic definitions -->
+<!-- A model contains Units, Functions, Domains, Classes, Structures and Topic definitions.
+Contains all definitions to describe a part of the modeled reality.
+-->
 
 --- 
 ## Classes
@@ -104,7 +114,7 @@ StructureDef =  'STRUCTURE' Struct-Name '='
 **Example**
 ```
 STRUCTURE PolygonStructure =
-  Polygon: Polygon;
+  Polygon: SURFACE WITH (STRAIGHTS) VERTEX GeometryCHLV03_V1.Coord2 WITHOUT OVERLAPS > 0.001;
 END PolygonStructure;
 
 STRUCTURE MultiPolygon =
@@ -161,6 +171,8 @@ END Wildruhezone;
 ---
 ## What are catalogue
 
+Catalogues are kind of data.
+
 Catalogues are external codelists that can be used like `Enumerations` but less static.
 
 <!-- You can use the "old" model but update your catalogue. -->
@@ -191,20 +203,19 @@ CLASS Wildruhezone_Teilobjekt =
   Bestimmungen : MANDATORY Wildruhezonen_Codelisten_V2_1.Codelisten.Bestimmungen_CatRef;
 END Wildruhezone_Teilobjekt;
 ```
+---
+## Have a look at a simple model
+[Buildings](./assets/demo_models/super_simple_buildings_V1.ili)
 
 ---
-## The real model `Wildruhezonen_LV95_V2_1`
+## Have a look at a real ILI file [Wildruhezonen_V2_1](./assets/demo_models/Wildruhezonen_V2_1.ili)
 
 ![uml](./assets/UML.png)
 
----
-## Have a look at the ILI file
-[Wildruhezonen_V2_1](./assets/wildruhezonen/Wildruhezonen_V2_1.ili)
-
 <!-- Mention IMPORTS -->
-
-## Check out the extended model for Glarus
-[Wildruhezonen_V2_1](./assets/wildruhezonen/GL_Wildruhezonen_V1_2020-03-31.ili)
+---
+## Check out the real extended model for Glarus
+[Wildruhezonen_V2_1](./assets/demo_models/GL_Wildruhezonen_V1_2020-03-31.ili)
 
 ---
 # <!--fit-->  INTERLIS implementation workflow and tools
@@ -229,7 +240,7 @@ ili2pg, ili2gpkg and ili2fgdb are programs that write an INTERLIS transfer file 
 
 ---
 ## ilivalidator
-The ilivalidator tool checks whether data in the INTERLIS 1 and 2 transfer format (*.itf/*.xtf)  complies with the associated model (*.ili). License terms and further information about the ilivalidator can be found here: 
+The ilivalidator tool checks whether data in the INTERLIS 1 and 2 transfer format (*.itf/*.xtf)  complies with the associated model (*.ili). License terms and further information about the ilivalidator can be found here.
 
 ---
 # <!--fit-->  Swiss geodata repositories
@@ -252,7 +263,7 @@ http://models.interlis.ch/ilisite.xml -> http://models.geo.kgk-cgc.ch/ilisite.xm
 
 ---
 
-# <!--fit--> QGIS MODEL BAKER 🧁
+# <!--fit--> 🧁 QGIS MODEL BAKER 
 
 ---
 ## <!--fit--> While INTERLIS is the hard stuff
@@ -267,6 +278,8 @@ http://models.interlis.ch/ilisite.xml -> http://models.geo.kgk-cgc.ch/ilisite.xm
 
 ![bg](./assets/johnny_depp.webp)
 
+---
+## What is MODEL BAKER?
 
 ---
 ## A QGIS Project Generator
@@ -290,7 +303,11 @@ This can be used to further optimize the project configuration.
 ## An ili2db controll station
 
 ```
-java -jar /home/dave/dev/opengisch/QgisModelBaker/QgisModelBaker/libili2db/bin/ili2pg-4.6.1/ili2pg-4.6.1.jar --schemaimport --dbhost localhost --dbport 5432 --dbusr postgres --dbpwd ****** --dbdatabase bakery --dbschema adsfdsaf2 --setupPgExt --coalesceCatalogueRef --createEnumTabs --createNumChecks --createUnique --createFk --createFkIdx --coalesceMultiSurface --coalesceMultiLine --coalesceMultiPoint --coalesceArray --beautifyEnumDispName --createGeomIdx --createMetaInfo --expandMultilingual --createTypeConstraint --createEnumTabsWithId --createTidCol --importTid --smart2Inheritance --strokeArcs --defaultSrsCode 2056 --models Wildruhezonen_LV95_V2_1
+java -jar /home/dave/dev/opengisch/QgisModelBaker/QgisModelBaker/libili2db/bin/ili2pg-4.6.1/ili2pg-4.6.1.jar --schemaimport --dbhost localhost --dbport 5432 
+--dbusr postgres --dbpwd ****** --dbdatabase bakery --dbschema adsfdsaf2 --setupPgExt --coalesceCatalogueRef --createEnumTabs --createNumChecks --createUnique 
+--createFk --createFkIdx --coalesceMultiSurface --coalesceMultiLine --coalesceMultiPoint --coalesceArray --beautifyEnumDispName --createGeomIdx --createMetaInfo 
+--expandMultilingual --createTypeConstraint --createEnumTabsWithId --createTidCol --importTid --smart2Inheritance --strokeArcs --defaultSrsCode 2056 
+--models Wildruhezonen_LV95_V2_1
 ```
 
 <!-- It provides the user only the needed settings to pass parameters to the ili2db.
@@ -306,6 +323,18 @@ Like [Asistente LADM-COL](https://github.com/SwissTierrasColombia/Asistente-LADM
 
 <!--
 Model Baker can be used as a framework for other projects. The plugin [Asistente LADM-COL](https://github.com/SwissTierrasColombia/Asistente-LADM-COL), created for the [Colombian implementation of the Land Administration Domain Model (LADM)](https://www.proadmintierra.info/), uses the Model Baker as a library to implement as much of the specific solution as possible as QGIS core functionality.
+-->
+---
+## <!--fit--> Check it out now
+
+<!--
+- super_simple_buildings
+-> show how it looks
+- Wildruhezonen_V2_1.ili, wrz_bundesmodell.xtf, Wildruhezonen_Catalogues_V2_1.xml
+-> show with Repo Wildruhezonen_LV95_V2_1 as well receiving the catalgue from repo
+-> show with usabilityhub
+-> show with the data 
+- Import everything
 -->
 ---
 # What is the UsabILIty Hub?
@@ -324,8 +353,8 @@ Settings for tools are configured in a metaconfiguration file, as well as links 
 ***Thus, this additional information usually consists of a metaconfiguration and any number of toppings.***
 
 --- 
-![usabilityhub](./assets/usabilityhub_modelbaker.png)
+![uml](./assets/usabilityhub_modelbaker.png)
 
 ---
-## Why not using INTERLIS
-![hank](./assets/hank_schrader.webp)
+## <!--fit--> Why not using INTERLIS?
+![bg](./assets/hank_schrader.webp)
