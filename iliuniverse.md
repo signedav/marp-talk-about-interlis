@@ -209,10 +209,9 @@ END Wildruhezone_Teilobjekt;
 [Buildings](./assets/demo_models/super_simple_buildings_V1.ili)
 
 ---
-## Have a look at the real model 
-[Wildruhezonen_V2_1](./assets/demo_models/Wildruhezonen_V2_1.ili)
+## Have a look at the real model [Wildruhezonen_V2_1](./assets/demo_models/Wildruhezonen_V2_1.ili)
 
-![uml left 80%](./assets/UML.png)
+![uml](./assets/UML.png)
 
 <!-- Mention IMPORTS -->
 ---
