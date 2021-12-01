@@ -328,13 +328,13 @@ Model Baker can be used as a framework for other projects. The plugin [Asistente
 ## <!--fit--> Check it out now
 
 <!--
-- super_simple_buildings
--> show how it looks
-- Wildruhezonen_V2_1.ili, wrz_bundesmodell.xtf, Wildruhezonen_Catalogues_V2_1.xml
--> show with Repo Wildruhezonen_LV95_V2_1 as well receiving the catalgue from repo
--> show with usabilityhub
--> show with the data 
+- super_simple_buildings to GPKG
+- Wildruhezonen_V2_1.ili, wrz_bundesmodell.xtf, Wildruhezonen_Catalogues_V2_1.xml to Postgres
+- show with Repo Wildruhezonen_LV95_V2_1 as well receiving the catalgue from repo to Postgres
+- show with usabilityhub
+- show with only having the xtf as source
 - Import everything
+- Show validation and export
 -->
 ---
 # What is the UsabILIty Hub?
