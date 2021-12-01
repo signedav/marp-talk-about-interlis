@@ -1,0 +1,29 @@
+INTERLIS 2.3;
+
+MODEL Buildings (de)
+AT "mailto:dave@localhost"
+VERSION "2021-10-06"  =
+  IMPORTS Units;
+
+  TOPIC Building_Parcel_Property =
+
+    CLASS Parcel =
+      Number : MANDATORY 1 .. 10000;
+    END Parcel;
+
+    CLASS Person =
+      !!@ ili2db.dispName = "Family Name"
+      Name : MANDATORY TEXT*255;
+      !!@ ili2db.dispName = "First Name"
+      First_Name : MANDATORY TEXT*255;
+    END Person;
+
+    ASSOCIATION Property =
+      Person -- {1..*} Person;
+      Parcel -- {0..*} Parcel;
+      ownership_share : MANDATORY 0 .. 100 [Units.Percent];
+    END Property;
+
+  END Building_Parcel_Property;
+
+END Buildings.
