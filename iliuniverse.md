@@ -8,7 +8,7 @@ paginate: true
 _paginate: false
 ---
 
-# <!--fit-->INTERLIS
+# <!--fit-->What is INTERLIS?
 --- 
 
 - INTER Land Information Systems
@@ -281,7 +281,7 @@ http://models.interlis.ch/ilisite.xml -> http://models.geo.kgk-cgc.ch/ilisite.xm
 ![bg](./assets/johnny_depp.webp)
 
 ---
-## <!--fit--> What is MODEL BAKER?
+# <!--fit--> What is MODEL BAKER?
 
 ---
 ## A QGIS Project Generator
