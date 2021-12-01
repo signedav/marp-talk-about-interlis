@@ -26,27 +26,29 @@ _paginate: false
 - Strict division between the transfer part and the modeling part
 -->
 --- 
-## Model definintion and data files
+## Model file and transfer data file
 
 The model is defined in INTERLIS language and stored in an `.ili` file.
 
 The data is in xml (considering the model) and stored as an `.xtf` file (former `.itf`).
 
 --- 
-## What made me to like INTERLIS
+## Why you could like INTERLIS
 
-> With INTERLIS that you have your database schema in your poket. 
+> You have your database schema in your poket. 
 
 > It's easy readable and precice.
 
-> Thanks to the nice tools (ili2 and Model Baker) it's easy to implement in your database and in QGIS.
+> Thanks to the nice tools, it's easy to implement in your database and in QGIS.
 
 <!--  Compared to e.g. SQL Scripts you can simply extend it. >
+
 --- 
 
 # <!--fit--> INTERLIS Modelling in 10 Minutes
 
 --- 
+
 ## Model Structure
 ```
 INTERLIS 2.3;
@@ -169,11 +171,10 @@ END Wildruhezone;
 <!-- Keywords to enforce or prevent specialization -->
 
 ---
-## What are catalogue
-
-Catalogues are kind of data.
+## What are catalogues?
 
 Catalogues are external codelists that can be used like `Enumerations` but less static.
+Catalogues are data but "belong" to the data model.
 
 <!-- You can use the "old" model but update your catalogue. -->
 
@@ -208,13 +209,14 @@ END Wildruhezone_Teilobjekt;
 [Buildings](./assets/demo_models/super_simple_buildings_V1.ili)
 
 ---
-## Have a look at a real ILI file [Wildruhezonen_V2_1](./assets/demo_models/Wildruhezonen_V2_1.ili)
+## Have a look at the real model 
+[Wildruhezonen_V2_1](./assets/demo_models/Wildruhezonen_V2_1.ili)
 
-![uml](./assets/UML.png)
+![uml left 80%](./assets/UML.png)
 
 <!-- Mention IMPORTS -->
 ---
-## Check out the real extended model for Glarus
+## Check out the real model extended for Glarus
 [Wildruhezonen_V2_1](./assets/demo_models/GL_Wildruhezonen_V1_2020-03-31.ili)
 
 ---
@@ -279,12 +281,12 @@ http://models.interlis.ch/ilisite.xml -> http://models.geo.kgk-cgc.ch/ilisite.xm
 ![bg](./assets/johnny_depp.webp)
 
 ---
-## What is MODEL BAKER?
+## <!--fit--> What is MODEL BAKER?
 
 ---
 ## A QGIS Project Generator
 
-Quickly **create a QGIS project** from a physical data model. 
+Quickly **creates a QGIS project** from a physical data model. 
 
 Analyzes the existing structure and configures a QGIS project with all available information. 
 
@@ -292,7 +294,7 @@ Analyzes the existing structure and configures a QGIS project with all available
 
 ## A QGIS Project Generator optimized for INTERLIS
 
-Models defined in INTERLIS provide additional meta information like domains, units of attributes or object oriented definitions of tables.
+Models defined in INTERLIS provide **additional meta information** like domains, units of attributes or object oriented definitions of tables.
 
 This can be used to further optimize the project configuration. 
 
