@@ -8,26 +8,31 @@ paginate: true
 _paginate: false
 ---
 
-# <!--fit--> What is INTERLIS and why it's used
+# <!--fit-->INTERLIS
 --- 
 
-[INTERLIS](https://www.interlis.ch/) (INTER Land Information Systems) is a data description language and a transfer format with special consideration of geodata. INTERLIS offers the possibility to describe spatial data precisely, to integrate them in conformity with the model and to exchange them easily among different users. INTERLIS has been bindingly anchored in Swiss geoinformation legislation since 2008. Since INTERLIS has been object-oriented since version 2, it can be extended very easily. This means that, for example, the federal government defines a model that the cantonal authorities can derive and extend according to their needs.
-
---- 
-
-- A very precise standardized language at a conceptual level for the description of
-data models (schemas)
-- Easy extendable (so optimal for data exchange between authorities with different needs)
+- INTER Land Information Systems
+- A data description language with special consideration of **geodata**
+- Object oriented and extendable
 - System neutral (platform independent)
-- Facilitates communication and understanding between IT and thematic specialists
-- It is readable by both humans and machines
-- Integrates data types to be used on GIS (for example Geometries)
-- Strict division between the transfer part and the modeling part (model driven
-approach)
+- Readable by humans and machines
+- Model driven approach
 
+<!-- [INTERLIS](https://www.interlis.ch/) (INTER Land Information Systems) is a data description language and a transfer format with special consideration of geodata. INTERLIS offers the possibility to describe spatial data precisely, to integrate them in conformity with the model and to exchange them easily among different users. INTERLIS has been bindingly anchored in Swiss geoinformation legislation since 2008. Since INTERLIS has been object-oriented since version 2, it can be extended very easily. This means that, for example, the federal government defines a model that the cantonal authorities can derive and extend according to their needs. 
+
+- Supports Geometries
+- Since version 2 object oriented - perfect for data exchange between authorities. This is important since it's anchored in Swiss geoinformation legislation since 2008 to use INTERLIS.
+- Perfect for the discussion between ITs and thematic specialists
+- Strict division between the transfer part and the modeling part
+-->
 --- 
+## What made me to like it
 
-> Personally I like about INTERLIS that you have your database schema in your poket. It's readable and precice. Compared to e.g. SQL Scripts you can simply extend it. Thanks to the nice tools (ili2 and Model Baker) it's easy to implement in your database and in QGIS.
+> With INTERLIS that you have your database schema in your poket. 
+
+> It's easy readable and precice. Compared to e.g. SQL Scripts you can simply extend it. 
+
+> Thanks to the nice tools (ili2 and Model Baker) it's easy to implement in your database and in QGIS.
 
 --- 
 
@@ -250,7 +255,7 @@ http://models.interlis.ch/ilisite.xml -> http://models.geo.kgk-cgc.ch/ilisite.xm
 # <!--fit--> QGIS MODEL BAKER 🧁
 
 ---
-# <!--fit--> While INTERLIS is the hard stuff
+## <!--fit--> While INTERLIS is the hard stuff
 
 ![bg](./assets/walter_white.webp)
 
@@ -258,20 +263,25 @@ http://models.interlis.ch/ilisite.xml -> http://models.geo.kgk-cgc.ch/ilisite.xm
 
 ---
 
-# <!--fit--> MODEL BAKER is the beginner drug
+## <!--fit--> MODEL BAKER is the beginner drug
 
 ![bg](./assets/johnny_depp.webp)
 
 
 ---
 ## A QGIS Project Generator
-The Model Baker is a QGIS plugin that allows to quickly create a QGIS project from a physical data model. The Model Baker analyzes the existing structure and configures a QGIS project with all available information. 
+
+Quickly **create a QGIS project** from a physical data model. 
+
+Analyzes the existing structure and configures a QGIS project with all available information. 
 
 ---
 
 ## A QGIS Project Generator optimized for INTERLIS
 
-Models defined in INTERLIS provide additional meta information like domains, units of attributes or object oriented definitions of tables. This can be used to further optimize the project configuration. 
+Models defined in INTERLIS provide additional meta information like domains, units of attributes or object oriented definitions of tables.
+
+This can be used to further optimize the project configuration. 
 
 <!-- Model Baker can use the meta information to configure layer tree, field widgets with conditions, form layouts, relations and much more.-->
 
@@ -279,13 +289,24 @@ Models defined in INTERLIS provide additional meta information like domains, uni
 
 ## An ili2db controll station
 
-It provides the user only the needed settings to pass parameters to the ili2db.
+```
+java -jar /home/dave/dev/opengisch/QgisModelBaker/QgisModelBaker/libili2db/bin/ili2pg-4.6.1/ili2pg-4.6.1.jar --schemaimport --dbhost localhost --dbport 5432 --dbusr postgres --dbpwd ****** --dbdatabase bakery --dbschema adsfdsaf2 --setupPgExt --coalesceCatalogueRef --createEnumTabs --createNumChecks --createUnique --createFk --createFkIdx --coalesceMultiSurface --coalesceMultiLine --coalesceMultiPoint --coalesceArray --beautifyEnumDispName --createGeomIdx --createMetaInfo --expandMultilingual --createTypeConstraint --createEnumTabsWithId --createTidCol --importTid --smart2Inheritance --strokeArcs --defaultSrsCode 2056 --models Wildruhezonen_LV95_V2_1
+```
 
+<!-- It provides the user only the needed settings to pass parameters to the ili2db.
+Creates the commando for ili2db.
+-->
 
 ---
 ## And it's a library
-Model Baker can be used as a framework for other projects. The plugin [Asistente LADM-COL](https://github.com/SwissTierrasColombia/Asistente-LADM-COL), created for the [Colombian implementation of the Land Administration Domain Model (LADM)](https://www.proadmintierra.info/), uses the Model Baker as a library to implement as much of the specific solution as possible as QGIS core functionality.
 
+Can be used as a framework.
+
+Like [Asistente LADM-COL](https://github.com/SwissTierrasColombia/Asistente-LADM-COL), created for the [Colombian implementation of the Land Administration Domain Model (LADM)](https://www.proadmintierra.info/) does it.
+
+<!--
+Model Baker can be used as a framework for other projects. The plugin [Asistente LADM-COL](https://github.com/SwissTierrasColombia/Asistente-LADM-COL), created for the [Colombian implementation of the Land Administration Domain Model (LADM)](https://www.proadmintierra.info/), uses the Model Baker as a library to implement as much of the specific solution as possible as QGIS core functionality.
+-->
 ---
 # What is the UsabILIty Hub?
 Receive meta data like ***ili2db settings***, ***layer styles*** and ***orders*** etc. automatically over the web. 
@@ -298,7 +319,9 @@ Get the additional information with the `ilidata.xml` file on the UsabILIty Hub 
 
 ---
 ## Metaconfiguration and Toppings
-Settings for tools are configured in a metaconfiguration file, as well as links to topping files that contain information about GIS project (such as symbologies or legend structures). Thus, this additional information usually consists of a metaconfiguration and any number of toppings. 
+Settings for tools are configured in a metaconfiguration file, as well as links to topping files that contain information about GIS project.
+
+***Thus, this additional information usually consists of a metaconfiguration and any number of toppings.***
 
 --- 
 ![usabilityhub](./assets/usabilityhub_modelbaker.png)
