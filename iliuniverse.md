@@ -41,7 +41,7 @@ The data is in xml (considering the model) and stored as an `.xtf` file (former 
 
 > Thanks to the nice tools, it's easy to implement in your database and in QGIS.
 
-<!--  Compared to e.g. SQL Scripts you can simply extend it. >
+<!--  Compared to e.g. SQL Scripts you can simply extend it. -->
 
 --- 
 
